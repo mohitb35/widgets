@@ -19,7 +19,7 @@ const Search = () => {
 
 	// As results.length was used inside the useEffect callback previously and not provided within the dependency array (2nd parameter), we saw an es-lint warning. If you provide results as a dependency, it will cause an infinite loop (as results is set from within the useEffect callback, triggering a rerender and useEffect being called again) unless you provide some way of escaping the loop.
 
-	// We use a second useEffect function to call the API, whenever debouncedTerm changes. 
+	// We use a second useEffect function to call the API, whenever debouncedTerm changes. This removes the results.length dependency needed earlier
 
 	useEffect( () => {
 		async function fetchData() {
