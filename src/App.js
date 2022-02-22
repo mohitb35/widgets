@@ -1,11 +1,13 @@
-import React, { /* useState */ } from 'react';
+import React, { useState } from 'react';
 
-/* import Accordion from './components/Accordion';
+import Accordion from './components/Accordion';
 import Search from './components/Search';
-import Dropdown from './components/Dropdown'; */
+import Dropdown from './components/Dropdown';
 import Translate from './components/Translate';
+import Route from './components/Route';
+import Header from './components/Header';
 
-/* const items = [
+const items = [
 	{
 		title: 'What is React?',
 		content: 'React is a front end JS framework'
@@ -33,22 +35,31 @@ const options = [
 		label: 'Green',
 		value: 'green'
 	}
-] */
+]
 
 const App = () => {
-	// const [selected, setSelected] = useState(options[0]);
+	const [selected, setSelected] = useState(options[0]);
 	return (
 		<div>
-			{/* <Accordion items={items}/> */}
-			{/* <Search /> */}
-			{/* <Dropdown
-				label='Select a color'
-				options={options} 
-				selected={selected} 
-				onSelectedChange={setSelected}
-			/>
-			<p style={{ color: selected.value }}>This text is {selected.value}</p> */}
-			<Translate />
+			<Header />
+			<Route path='/'>
+				<Accordion items={items} />
+			</Route>
+			<Route path='/list'>
+				<Search />
+			</Route>
+			<Route path='/dropdown'>
+				<Dropdown 
+					label='Select a color'
+					options={options}
+					selected={selected}
+					onSelectedChange={setSelected}
+				/>
+				<p style={{ color: selected.value }}>This text is {selected.value}</p>
+			</Route>
+			<Route path='/translate'>
+				<Translate />
+			</Route>
 		</div>
 	)
 };
